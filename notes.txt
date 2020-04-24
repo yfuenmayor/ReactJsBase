@@ -1,0 +1,123 @@
+// Limpiando aplicacion nativa
+
+Eliminamos:
+    SRC :
+        setupTests.js
+        logo.svg
+        index.css
+        app.css
+        app.test.js
+
+
+
+// Estructura de app-react
+
+Carpetas:
+    
+    node_modules = en esta carpeta se instalan las dependencias del proyecto
+
+    public = Se colocan los archivos ppales como el layout, estilos e imagenes
+        index.html = seria como el layout donde cargamos el template ppal
+
+Archivos:
+
+    package.json = 
+    
+        1.- Dependencies: se cargan las dependencias que se encuentran en node_modules
+
+        2.- Scripts: aca se llaman las instancias en las que podemos iniciar nuestro proyecto (start,build, test, eject)
+
+
+-----------------------------------------------------------------------------
+
+ Carpeta SRC: 
+
+    FILE INDEX.JS
+
+        En este archivo es el componente principal de la app y se cargan las librerias y dependencias necesarios.
+
+        REACT.render(parametro1, parametro2);
+
+            Inicialmente este render lo que hace es inyectar todo al div ppal del layout y los dos parametros que se le pasan son:
+
+                parametro1 = QUE vamos a inyectar
+                parametro2 = DONDE lo vamos a inyectar
+
+-------------------------------------------------------------------------------
+                            CREANDO COMPONENTES
+-------------------------------------------------------------------------------
+
+Los componentes los creamos dentro de la carpeta SRC y van dentro de otra carpeta llamada componentes, los unicos componentes que van fuera son los principales que llevan por nombre:
+index.js y App.js
+
+    - El nombre de los mismos debe empezar con letra mayuscula y la extension es JS o JSX
+    - Lo primero es hacer el import de REACT = import React from 'react';
+    - Luego creamos una funcion donde se ejecutara la logica y llevara un return
+    - Este RETURN solo puede devolver un elemento, para porder devolver mas de uno importamos un metodo de REACT y colocamos todo dentro de la funcion:
+
+            // El import de react seria: import React, { Fragment } from 'react';
+            
+            // return (
+                <Fragment>
+                    <Header />
+
+                    <Footer />
+                </Fragment>
+            )
+
+Los comoponentes se exportan y luego los importamos al App que es uno de los principales
+
+-------------------------------------------------------------------------------
+                            JSX BASICO
+-------------------------------------------------------------------------------
+
+
+{variable} : lo usamos para mostrar variables de js
+className="" : se usa para agregar las clases a las etiquetas de html ya que class es reservada
+
+snipets:
+
+imr = import react
+sfc = function row
+
+-------------------------------------------------------------------------------
+                            PROPS                           
+-------------------------------------------------------------------------------
+
+Los props son los datos que vamos a estar moviendo entre componentes, generalmente se envian en variables, funciones entre otros.
+
+    Para enviar un prop solo se le coloca al llamado del componente dentro:
+
+            <Header
+                titulo = 'Aplicacion web'
+                edad = {20}
+            />
+
+    Para recibirlos en el componente se hace de la siguiente manera:
+
+        //como se recibian anteiormente siendo props un object
+        function Header(props)
+
+        //nueva forma de trabajar con props
+        function Header({key}) {
+        
+        return(
+        <h1>{key}</h1>
+        )
+    }
+
+-------------------------------------------------------------------------------
+                            STATES     {useState}                      
+-------------------------------------------------------------------------------
+
+Agregamos el useState a la importacion de React
+
+    dentro del componente lo definimos de la siguiente manera:
+
+        const [ parametro1, parametro2] = useState( datos del state );
+
+        parametro1: es la variable de los datos del state
+        parametro2: parametro que interactua con los datos del state (parametro1)
+
+        El parametro2 siempre es una funcion la cual trabaja con una copia del parametro1
+
